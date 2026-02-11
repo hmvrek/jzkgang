@@ -26,7 +26,7 @@
         </svg>
       </div>
       <h1 class="gate-title">Protected Access</h1>
-      <p class="gate-subtitle">Wpisz swój jednorazowy klucz wejscia</p>
+      <p class="gate-subtitle">Wpisz swoj jednorazowy klucz wejscia</p>
 
       <form id="key-form" autocomplete="off">
         <div class="input-wrapper">
@@ -63,297 +63,403 @@
       <p>Access Granted</p>
     </div>
 
+    <!-- ===================== TOP NAVBAR ===================== -->
+    <nav class="navbar">
+      <div class="navbar-inner">
+        <span class="navbar-brand">JZK GANG</span>
+        <div class="navbar-links">
+          <button class="nav-btn active" data-category="all">Wszystko</button>
+          <button class="nav-btn" data-category="programy">Programy</button>
+          <button class="nav-btn" data-category="crosshair">Crosshair X</button>
+          <button class="nav-btn" data-category="fpsboost">FPS Boost</button>
+        </div>
+      </div>
+    </nav>
+
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" id="hero-section">
       <h1 class="hero-title">Witam na JZK GANG</h1>
       <p class="hero-subtitle">
         Tu znajdziesz wszystko czego dusza zapragnie powaznie mowie ;)
       </p>
     </section>
 
-    <!-- ===================== PROJECT CARDS ===================== -->
-    <!--
-      CUSTOMIZE YOUR PROJECTS:
-      Copy a <div class="project-card"> block and modify the title,
-      description, and links to add your own projects.
-    -->
-    <section class="projects-grid">
+    <!-- ===================== CATEGORY CARDS (home view) ===================== -->
+    <section class="categories-grid" id="categories-view">
+      <div class="category-card" data-target="programy">
+        <div class="category-icon">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+            <line x1="8" y1="21" x2="16" y2="21"></line>
+            <line x1="12" y1="17" x2="12" y2="21"></line>
+          </svg>
+        </div>
+        <h2>Programy</h2>
+        <p>Photoshop, Premiere Pro, Media Encoder, After Effects i wiecej</p>
+        <span class="category-count">18 plikow</span>
+      </div>
 
-      <div class="project-card">
+      <div class="category-card" data-target="crosshair">
+        <div class="category-icon">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="22" y1="12" x2="18" y2="12"></line>
+            <line x1="6" y1="12" x2="2" y2="12"></line>
+            <line x1="12" y1="6" x2="12" y2="2"></line>
+            <line x1="12" y1="22" x2="12" y2="18"></line>
+          </svg>
+        </div>
+        <h2>Crosshair X</h2>
+        <p>Customowe crosshairy do gier - CS2, Valorant, Fortnite</p>
+        <span class="category-count">Wkrotce</span>
+      </div>
+
+      <div class="category-card" data-target="fpsboost">
+        <div class="category-icon">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+          </svg>
+        </div>
+        <h2>FPS Boost</h2>
+        <p>Optymalizacja systemu, poradniki, narzedzia do boostowania FPS</p>
+        <span class="category-count">Wkrotce</span>
+      </div>
+    </section>
+
+    <!-- ===================== PROJECT CARDS GRID ===================== -->
+    <section class="projects-grid" id="projects-grid">
+
+      <!-- ===== PROGRAMY ===== -->
+      <div class="project-card" data-category="programy">
         <div class="card-header">
           <h2>Photoshop 2024 v25.7</h2>
           <span class="card-badge">PHOTOSHOP</span>
         </div>
         <p>Wiadomo co to Photoshop</p>
         <div class="card-actions">
-          <a href="https://pixeldrain.com/u/N3A7wg8E" class="btn-github" target="_blank" rel="noopener noreferrer">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          <a href="https://pixeldrain.com/u/N3A7wg8E" class="btn-download" target="_blank" rel="noopener noreferrer">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
             POBIERZ V1
           </a>
-          <a href="https://gofile.io/d/6CwYrr" class="btn-demo">POBIERZ V2</a>
+          <a href="https://gofile.io/d/6CwYrr" class="btn-alt" target="_blank" rel="noopener noreferrer">POBIERZ V2</a>
         </div>
       </div>
 
-      <div class="project-card">
+      <div class="project-card" data-category="programy">
         <div class="card-header">
           <h2>Photoshop 2025 26.11</h2>
           <span class="card-badge">PHOTOSHOP</span>
         </div>
-        <p>Wszyscy wiedzą co to Photoshop</p>
+        <p>Wszyscy wiedza co to Photoshop</p>
         <div class="card-actions">
-          <a href="https://pixeldrain.com/u/ZxAswi4P" class="btn-github" target="_blank" rel="noopener noreferrer">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          <a href="https://pixeldrain.com/u/ZxAswi4P" class="btn-download" target="_blank" rel="noopener noreferrer">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
             POBIERZ V1
           </a>
-          <a href="https://gofile.io/d/jP3UPU" class="btn-demo">POBIERZ V2</a>
+          <a href="https://gofile.io/d/jP3UPU" class="btn-alt" target="_blank" rel="noopener noreferrer">POBIERZ V2</a>
         </div>
       </div>
 
-      <div class="project-card">
+      <div class="project-card" data-category="programy">
         <div class="card-header">
           <h2>Photoshop 2026 v27.0</h2>
-          <span class="card-badge">PROGRAMY</span>
+          <span class="card-badge">PHOTOSHOP</span>
         </div>
-        <p>Wszyscy wiedzą co to photoshop</p>
+        <p>Wszyscy wiedza co to Photoshop</p>
         <div class="card-actions">
-          <a href="https://pixeldrain.com/u/4Q2b6pEF" class="btn-github" target="_blank" rel="noopener noreferrer">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          <a href="https://pixeldrain.com/u/4Q2b6pEF" class="btn-download" target="_blank" rel="noopener noreferrer">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
             POBIERZ V1
           </a>
-          <a href="https://gofile.io/d/JsV4os" class="btn-demo">POBIERZ V2</a>
+          <a href="https://gofile.io/d/JsV4os" class="btn-alt" target="_blank" rel="noopener noreferrer">POBIERZ V2</a>
         </div>
       </div>
 
-      <div class="project-card">
+      <div class="project-card" data-category="programy">
         <div class="card-header">
           <h2>Premiere Pro 2024.0</h2>
-          <span class="card-badge">PERMIER PRO</span>
+          <span class="card-badge">PREMIERE PRO</span>
         </div>
         <p>Wiadomo co to PREMIER PRO</p>
         <div class="card-actions">
-          <a href="https://pixeldrain.com/u/BXs2eBhN" class="btn-github" target="_blank" rel="noopener noreferrer">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          <a href="https://pixeldrain.com/u/BXs2eBhN" class="btn-download" target="_blank" rel="noopener noreferrer">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
             POBIERZ V1
           </a>
-          <a href="https://gofile.io/d/j3A5Si" class="btn-demo">POBIERZ V2</a>
+          <a href="https://gofile.io/d/j3A5Si" class="btn-alt" target="_blank" rel="noopener noreferrer">POBIERZ V2</a>
         </div>
       </div>
 
-      <div class="project-card">
+      <div class="project-card" data-category="programy">
         <div class="card-header">
           <h2>Premiere Pro 2025.5</h2>
-          <span class="card-badge">PERMIER PRO</span>
+          <span class="card-badge">PREMIERE PRO</span>
         </div>
         <p>Wiadomo co to PREMIER PRO</p>
         <div class="card-actions">
-          <a href="https://pixeldrain.com/u/rAi8ZUDG" class="btn-github" target="_blank" rel="noopener noreferrer">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          <a href="https://pixeldrain.com/u/rAi8ZUDG" class="btn-download" target="_blank" rel="noopener noreferrer">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
             POBIERZ V1
           </a>
-          <a href="https://gofile.io/d/lgjNuL" class="btn-demo">POBIERZ V2</a>
+          <a href="https://gofile.io/d/lgjNuL" class="btn-alt" target="_blank" rel="noopener noreferrer">POBIERZ V2</a>
         </div>
       </div>
 
-      <div class="project-card">
+      <div class="project-card" data-category="programy">
         <div class="card-header">
           <h2>Premiere Pro 2026</h2>
-          <span class="card-badge">PERMIER PRO</span>
+          <span class="card-badge">PREMIERE PRO</span>
         </div>
         <p>Wiadomo co to PREMIER PRO</p>
         <div class="card-actions">
-          <a href="https://pixeldrain.com/u/h55RGoHf" class="btn-github" target="_blank" rel="noopener noreferrer">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          <a href="https://pixeldrain.com/u/h55RGoHf" class="btn-download" target="_blank" rel="noopener noreferrer">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
             POBIERZ V1
           </a>
-          <a href="https://gofile.io/d/ZHoK4E" class="btn-demo">POBIERZ V2</a>
+          <a href="https://gofile.io/d/ZHoK4E" class="btn-alt" target="_blank" rel="noopener noreferrer">POBIERZ V2</a>
         </div>
       </div>
 
-      <div class="project-card">
+      <div class="project-card" data-category="programy">
         <div class="card-header">
           <h2>Media Encoder 2020</h2>
           <span class="card-badge">MEDIA ENCODER</span>
         </div>
-        <p>Wiadomo co to MEDIA ENCODER a jak nie wiesz to łatwiej sie na nim Eksportuje projekty</p>
+        <p>Wiadomo co to MEDIA ENCODER a jak nie wiesz to latwiej sie na nim Eksportuje projekty</p>
         <div class="card-actions">
-          <a href="https://pixeldrain.com/u/Yy8cD7Qi" class="btn-github" target="_blank" rel="noopener noreferrer">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          <a href="https://pixeldrain.com/u/Yy8cD7Qi" class="btn-download" target="_blank" rel="noopener noreferrer">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
             POBIERZ V1
           </a>
-          <a href="https://gofile.io/d/Go7JCN" class="btn-demo">POBIERZ V2</a>
+          <a href="https://gofile.io/d/Go7JCN" class="btn-alt" target="_blank" rel="noopener noreferrer">POBIERZ V2</a>
         </div>
       </div>
-      
-      <div class="project-card">
+
+      <div class="project-card" data-category="programy">
         <div class="card-header">
           <h2>Media Encoder 2021</h2>
           <span class="card-badge">MEDIA ENCODER</span>
         </div>
-        <p>Wiadomo co to MEDIA ENCODER a jak nie wiesz to łatwiej sie na nim Eksportuje projekty</p>
+        <p>Wiadomo co to MEDIA ENCODER a jak nie wiesz to latwiej sie na nim Eksportuje projekty</p>
         <div class="card-actions">
-          <a href="https://pixeldrain.com/u/mdJGkfhD" class="btn-github" target="_blank" rel="noopener noreferrer">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          <a href="https://pixeldrain.com/u/mdJGkfhD" class="btn-download" target="_blank" rel="noopener noreferrer">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
             POBIERZ V1
           </a>
-          <a href="https://gofile.io/d/7VNMYB" class="btn-demo">POBIERZ V2</a>
+          <a href="https://gofile.io/d/7VNMYB" class="btn-alt" target="_blank" rel="noopener noreferrer">POBIERZ V2</a>
         </div>
       </div>
-            
-      <div class="project-card">
+
+      <div class="project-card" data-category="programy">
         <div class="card-header">
           <h2>Media Encoder 2023.2</h2>
           <span class="card-badge">MEDIA ENCODER</span>
         </div>
-        <p>Wiadomo co to MEDIA ENCODER a jak nie wiesz to łatwiej sie na nim Eksportuje projekty</p>
+        <p>Wiadomo co to MEDIA ENCODER a jak nie wiesz to latwiej sie na nim Eksportuje projekty</p>
         <div class="card-actions">
-          <a href="https://pixeldrain.com/u/fS5jYvhw" class="btn-github" target="_blank" rel="noopener noreferrer">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          <a href="https://pixeldrain.com/u/fS5jYvhw" class="btn-download" target="_blank" rel="noopener noreferrer">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
             POBIERZ V1
           </a>
-          <a href="https://gofile.io/d/nk2C2a" class="btn-demo">POBIERZ V2</a>
+          <a href="https://gofile.io/d/nk2C2a" class="btn-alt" target="_blank" rel="noopener noreferrer">POBIERZ V2</a>
         </div>
       </div>
-                  
-      <div class="project-card">
+
+      <div class="project-card" data-category="programy">
         <div class="card-header">
           <h2>Media Encoder 2024.5</h2>
           <span class="card-badge">MEDIA ENCODER</span>
         </div>
-        <p>Wiadomo co to MEDIA ENCODER a jak nie wiesz to łatwiej sie na nim Eksportuje projekty</p>
+        <p>Wiadomo co to MEDIA ENCODER a jak nie wiesz to latwiej sie na nim Eksportuje projekty</p>
         <div class="card-actions">
-          <a href="https://pixeldrain.com/u/r1V9ZfM1" class="btn-github" target="_blank" rel="noopener noreferrer">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          <a href="https://pixeldrain.com/u/r1V9ZfM1" class="btn-download" target="_blank" rel="noopener noreferrer">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
             POBIERZ V1
           </a>
-          <a href="https://gofile.io/d/AvK9R1" class="btn-demo">POBIERZ V2</a>
+          <a href="https://gofile.io/d/AvK9R1" class="btn-alt" target="_blank" rel="noopener noreferrer">POBIERZ V2</a>
         </div>
       </div>
-                     
-      <div class="project-card">
+
+      <div class="project-card" data-category="programy">
         <div class="card-header">
           <h2>Media Encoder 2025.6</h2>
           <span class="card-badge">MEDIA ENCODER</span>
         </div>
-        <p>Wiadomo co to MEDIA ENCODER a jak nie wiesz to łatwiej sie na nim Eksportuje projekty</p>
+        <p>Wiadomo co to MEDIA ENCODER a jak nie wiesz to latwiej sie na nim Eksportuje projekty</p>
         <div class="card-actions">
-          <a href="https://pixeldrain.com/u/GfgUa7eA" class="btn-github" target="_blank" rel="noopener noreferrer">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          <a href="https://pixeldrain.com/u/GfgUa7eA" class="btn-download" target="_blank" rel="noopener noreferrer">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
             POBIERZ V1
           </a>
-          <a href="https://gofile.io/d/a2ty1b" class="btn-demo">POBIERZ V2</a>
+          <a href="https://gofile.io/d/a2ty1b" class="btn-alt" target="_blank" rel="noopener noreferrer">POBIERZ V2</a>
         </div>
       </div>
-                              
-      <div class="project-card">
+
+      <div class="project-card" data-category="programy">
         <div class="card-header">
           <h2>Media Encoder 2026.0</h2>
           <span class="card-badge">MEDIA ENCODER</span>
         </div>
-        <p>Wiadomo co to MEDIA ENCODER a jak nie wiesz to łatwiej sie na nim Eksportuje projekty</p>
+        <p>Wiadomo co to MEDIA ENCODER a jak nie wiesz to latwiej sie na nim Eksportuje projekty</p>
         <div class="card-actions">
-          <a href="https://pixeldrain.com/u/GfiPWYdR" class="btn-github" target="_blank" rel="noopener noreferrer">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          <a href="https://pixeldrain.com/u/GfiPWYdR" class="btn-download" target="_blank" rel="noopener noreferrer">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
             POBIERZ V1
           </a>
-          <a href="https://gofile.io/d/KdgyhI" class="btn-demo">POBIERZ V2</a>
+          <a href="https://gofile.io/d/KdgyhI" class="btn-alt" target="_blank" rel="noopener noreferrer">POBIERZ V2</a>
         </div>
       </div>
-                                       
-      <div class="project-card">
+
+      <div class="project-card" data-category="programy">
         <div class="card-header">
           <h2>After Effects 2020 v17.7</h2>
           <span class="card-badge">AFTER EFFECTS</span>
         </div>
         <p>Wiadomo co to After Effects</p>
         <div class="card-actions">
-          <a href="https://pixeldrain.com/u/RQyayo7K" class="btn-github" target="_blank" rel="noopener noreferrer">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          <a href="https://pixeldrain.com/u/RQyayo7K" class="btn-download" target="_blank" rel="noopener noreferrer">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
             POBIERZ V1
           </a>
-          <a href="https://gofile.io/d/ahQyXB" class="btn-demo">POBIERZ V2</a>
+          <a href="https://gofile.io/d/ahQyXB" class="btn-alt" target="_blank" rel="noopener noreferrer">POBIERZ V2</a>
         </div>
       </div>
-                                                
-      <div class="project-card">
+
+      <div class="project-card" data-category="programy">
         <div class="card-header">
           <h2>After Effects 2021 v18.0</h2>
           <span class="card-badge">AFTER EFFECTS</span>
         </div>
         <p>Wiadomo co to After Effects</p>
         <div class="card-actions">
-          <a href="https://pixeldrain.com/u/LPrfhXHv" class="btn-github" target="_blank" rel="noopener noreferrer">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          <a href="https://pixeldrain.com/u/LPrfhXHv" class="btn-download" target="_blank" rel="noopener noreferrer">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
             POBIERZ V1
           </a>
-          <a href="https://gofile.io/d/P7Njv7" class="btn-demo">POBIERZ V2</a>
+          <a href="https://gofile.io/d/P7Njv7" class="btn-alt" target="_blank" rel="noopener noreferrer">POBIERZ V2</a>
         </div>
       </div>
-  
-      <div class="project-card">
+
+      <div class="project-card" data-category="programy">
         <div class="card-header">
           <h2>After Effects 2023.2</h2>
           <span class="card-badge">AFTER EFFECTS</span>
         </div>
         <p>Wiadomo co to After Effects</p>
         <div class="card-actions">
-          <a href="https://pixeldrain.com/u/iViNM8uc" class="btn-github" target="_blank" rel="noopener noreferrer">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          <a href="https://pixeldrain.com/u/iViNM8uc" class="btn-download" target="_blank" rel="noopener noreferrer">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
             POBIERZ V1
           </a>
-          <a href="https://gofile.io/d/IjMtkF" class="btn-demo">POBIERZ V2</a>
+          <a href="https://gofile.io/d/IjMtkF" class="btn-alt" target="_blank" rel="noopener noreferrer">POBIERZ V2</a>
         </div>
       </div>
-           
-      <div class="project-card">
+
+      <div class="project-card" data-category="programy">
         <div class="card-header">
           <h2>After Effects 2024.5</h2>
           <span class="card-badge">AFTER EFFECTS</span>
         </div>
         <p>Wiadomo co to After Effects</p>
         <div class="card-actions">
-          <a href="https://pixeldrain.com/u/Gt6XmdR9" class="btn-github" target="_blank" rel="noopener noreferrer">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          <a href="https://pixeldrain.com/u/Gt6XmdR9" class="btn-download" target="_blank" rel="noopener noreferrer">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
             POBIERZ V1
           </a>
-          <a href="https://gofile.io/d/9H3TJ5" class="btn-demo">POBIERZ V2</a>
+          <a href="https://gofile.io/d/9H3TJ5" class="btn-alt" target="_blank" rel="noopener noreferrer">POBIERZ V2</a>
         </div>
       </div>
-                    
-      <div class="project-card">
+
+      <div class="project-card" data-category="programy">
         <div class="card-header">
           <h2>After Effects 2025.6</h2>
           <span class="card-badge">AFTER EFFECTS</span>
         </div>
         <p>Wiadomo co to After Effects</p>
         <div class="card-actions">
-          <a href="https://pixeldrain.com/u/AJvwJ4tG" class="btn-github" target="_blank" rel="noopener noreferrer">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          <a href="https://pixeldrain.com/u/AJvwJ4tG" class="btn-download" target="_blank" rel="noopener noreferrer">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
             POBIERZ V1
           </a>
-          <a href="https://gofile.io/d/WoJwUu" class="btn-demo">POBIERZ V2</a>
+          <a href="https://gofile.io/d/WoJwUu" class="btn-alt" target="_blank" rel="noopener noreferrer">POBIERZ V2</a>
         </div>
       </div>
-                             
-      <div class="project-card">
+
+      <div class="project-card" data-category="programy">
         <div class="card-header">
           <h2>After Effects 2026.0</h2>
           <span class="card-badge">AFTER EFFECTS</span>
         </div>
         <p>Wiadomo co to After Effects</p>
         <div class="card-actions">
-          <a href="https://pixeldrain.com/u/7Fu4NQqA" class="btn-github" target="_blank" rel="noopener noreferrer">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          <a href="https://pixeldrain.com/u/7Fu4NQqA" class="btn-download" target="_blank" rel="noopener noreferrer">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
             POBIERZ V1
           </a>
-          <a href="https://gofile.io/d/QiYZ9s" class="btn-demo">POBIERZ V2</a>
+          <a href="https://gofile.io/d/QiYZ9s" class="btn-alt" target="_blank" rel="noopener noreferrer">POBIERZ V2</a>
         </div>
       </div>
-         
+
+      <!-- ===== CROSSHAIR X ===== -->
+      <div class="project-card" data-category="crosshair">
+        <div class="card-header">
+          <h2>Crosshair Pack CS2</h2>
+          <span class="card-badge">CROSSHAIR</span>
+        </div>
+        <p>Paczka najlepszych crosshairow do CS2 - pro player configs</p>
+        <div class="card-actions">
+          <span class="coming-soon-badge">Wkrotce</span>
+        </div>
+      </div>
+
+      <div class="project-card" data-category="crosshair">
+        <div class="card-header">
+          <h2>Crosshair Pack Valorant</h2>
+          <span class="card-badge">CROSSHAIR</span>
+        </div>
+        <p>Custom crosshairy do Valorant - pro player settings</p>
+        <div class="card-actions">
+          <span class="coming-soon-badge">Wkrotce</span>
+        </div>
+      </div>
+
+      <!-- ===== FPS BOOST ===== -->
+      <div class="project-card" data-category="fpsboost">
+        <div class="card-header">
+          <h2>Windows Optimizer</h2>
+          <span class="card-badge">FPS BOOST</span>
+        </div>
+        <p>Pelna optymalizacja Windows pod gry - wiecej FPS, mniej lagów</p>
+        <div class="card-actions">
+          <span class="coming-soon-badge">Wkrotce</span>
+        </div>
+      </div>
+
+      <div class="project-card" data-category="fpsboost">
+        <div class="card-header">
+          <h2>GPU Tweaker</h2>
+          <span class="card-badge">FPS BOOST</span>
+        </div>
+        <p>Narzedzie do optymalizacji ustawien karty graficznej</p>
+        <div class="card-actions">
+          <span class="coming-soon-badge">Wkrotce</span>
+        </div>
+      </div>
+
     </section>
+
+    <!-- Empty state when no cards match -->
+    <div class="empty-state hidden" id="empty-state">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <p>Brak plikow w tej kategorii</p>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
-      <p>Protected access &bull; Klucz wejscia Generowany przez bota discord jednorazowo</p>
+      <p>Protected access &bull; Klucz wejscia generowany przez bota Discord jednorazowo</p>
     </footer>
   </main>
 

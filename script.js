@@ -1,18 +1,5 @@
 /* ==========================================================
-   SCRIPT.JS — Firebase Firestore key verification
-   ==========================================================
-   
-   HOW TO SET UP:
-   1. Create a Firebase project at https://console.firebase.google.com
-   2. Enable Cloud Firestore
-   3. Create a collection called "access_keys"
-   4. Add documents with these fields:
-      - key       (string)  — the actual access code
-      - used      (boolean) — set to false
-      - createdAt (timestamp)
-      - expiresAt (timestamp) — e.g. 10-30 minutes after createdAt
-   5. Paste your Firebase config below in the firebaseConfig object
-   
+   SCRIPT.JS — Firebase Firestore key verification + Category nav
    ========================================================== */
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
@@ -30,7 +17,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
 // =====================================================
-// 🔧 PASTE YOUR FIREBASE CONFIG HERE
+// PASTE YOUR FIREBASE CONFIG HERE
 // =====================================================
 const firebaseConfig = {
   apiKey: "AIzaSyCIPG8gfd4hK9duC0OMdz3Vne7Wt24zLbc",
@@ -47,7 +34,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// ---- DOM Elements ----
+// ---- DOM Elements (Access Gate) ----
 const gate = document.getElementById("access-gate");
 const mainContent = document.getElementById("main-content");
 const form = document.getElementById("key-form");
@@ -57,6 +44,15 @@ const btnText = document.getElementById("btn-text");
 const btnSpinner = document.getElementById("btn-spinner");
 const errorMsg = document.getElementById("error-msg");
 const welcomeFlash = document.getElementById("welcome-flash");
+
+// ---- DOM Elements (Category Navigation) ----
+const navBtns = document.querySelectorAll(".nav-btn");
+const categoriesView = document.getElementById("categories-view");
+const projectsGrid = document.getElementById("projects-grid");
+const heroSection = document.getElementById("hero-section");
+const emptyState = document.getElementById("empty-state");
+const categoryCards = document.querySelectorAll(".category-card");
+const projectCards = document.querySelectorAll(".project-card");
 
 // ---- Form Submit Handler ----
 form.addEventListener("submit", async (e) => {
@@ -112,9 +108,6 @@ form.addEventListener("submit", async (e) => {
       usedAt: serverTimestamp(),
     });
 
-    // Optionally delete the document entirely (uncomment the line below):
-    // await deleteDoc(keyDocRef);
-
     // Unlock the content
     unlockContent();
   } catch (error) {
@@ -126,7 +119,6 @@ form.addEventListener("submit", async (e) => {
 
 // ---- Unlock Content ----
 function unlockContent() {
-  // Hide the gate
   gate.style.transition = "opacity 0.4s ease, transform 0.4s ease";
   gate.style.opacity = "0";
   gate.style.transform = "scale(0.97)";
@@ -161,7 +153,6 @@ function showError(message) {
   errorMsg.classList.remove("hidden");
   keyInput.classList.add("error");
 
-  // Remove error styling after animation
   setTimeout(() => {
     keyInput.classList.remove("error");
   }, 600);
@@ -171,3 +162,76 @@ function hideError() {
   errorMsg.classList.add("hidden");
   keyInput.classList.remove("error");
 }
+
+// ==========================================================
+// CATEGORY NAVIGATION
+// ==========================================================
+
+let currentCategory = "all";
+
+function showView(category) {
+  currentCategory = category;
+
+  // Update nav buttons
+  navBtns.forEach((btn) => {
+    btn.classList.toggle("active", btn.dataset.category === category);
+  });
+
+  if (category === "all") {
+    // Show home view: hero + category cards, hide projects grid
+    heroSection.style.display = "";
+    categoriesView.classList.remove("hidden");
+    projectsGrid.classList.add("hidden");
+    emptyState.classList.add("hidden");
+  } else {
+    // Show filtered projects
+    heroSection.style.display = "none";
+    categoriesView.classList.add("hidden");
+    projectsGrid.classList.remove("hidden");
+
+    let visibleCount = 0;
+    projectCards.forEach((card) => {
+      if (card.dataset.category === category) {
+        card.classList.remove("hidden");
+        visibleCount++;
+      } else {
+        card.classList.add("hidden");
+      }
+    });
+
+    // Show/hide empty state
+    if (visibleCount === 0) {
+      emptyState.classList.remove("hidden");
+    } else {
+      emptyState.classList.add("hidden");
+    }
+
+    // Re-trigger staggered animation
+    let delay = 0.1;
+    projectCards.forEach((card) => {
+      if (!card.classList.contains("hidden")) {
+        card.style.animation = "none";
+        card.offsetHeight; // force reflow
+        card.style.animation = `cardReveal 0.6s ease-out ${delay}s both`;
+        delay += 0.05;
+      }
+    });
+  }
+}
+
+// Nav button clicks
+navBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    showView(btn.dataset.category);
+  });
+});
+
+// Category card clicks (home view)
+categoryCards.forEach((card) => {
+  card.addEventListener("click", () => {
+    showView(card.dataset.target);
+  });
+});
+
+// Initialize: show home view, hide projects grid
+projectsGrid.classList.add("hidden");

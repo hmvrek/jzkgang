@@ -11,19 +11,16 @@
   --text-primary: #ffffff;
   --text-secondary: #a0a0a0;
   --text-body: #d4d4d4;
-  
   /* Stary niebieski → nowy fiolet z lekkim różowym podtonem */
-  --accent: #c084fc;           /* główny kolor – jasny fiolet z różową nutą */
-  --accent-glow: rgba(192, 132, 252, 0.15);
-  --accent-glow-strong: rgba(192, 132, 252, 0.30);
-  
+  --accent: #b26bff;
+  --accent-glow: rgba(178, 107, 255, 0.14);
+  --accent-glow-strong: rgba(178, 107, 255, 0.28);
   --border: rgba(255, 255, 255, 0.06);
   --border-hover: rgba(255, 255, 255, 0.12);
   --error: #ff4d4d;
   --error-bg: rgba(255, 77, 77, 0.08);
   --glass-bg: rgba(255, 255, 255, 0.03);
   --glass-border: rgba(255, 255, 255, 0.08);
-  
   --radius: 16px;
   --radius-sm: 10px;
   --radius-xs: 8px;

@@ -447,6 +447,7 @@ body {
 .category-card:nth-child(1) { animation-delay: 0.4s; }
 .category-card:nth-child(2) { animation-delay: 0.5s; }
 .category-card:nth-child(3) { animation-delay: 0.6s; }
+.category-card:nth-child(4) { animation-delay: 0.7s; }
 
 .category-card:hover {
   background: var(--bg-card-hover);
@@ -522,6 +523,51 @@ body {
   border-color: var(--border-hover);
   transform: translateY(-4px);
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--border-hover);
+}
+
+/* ---- Program Icons ---- */
+.card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  flex-shrink: 0;
+}
+
+.card-icon-ps {
+  background: #001e36;
+  color: #31a8ff;
+  border: 1px solid rgba(49, 168, 255, 0.25);
+}
+
+.card-icon-pr {
+  background: #00005b;
+  color: #9999ff;
+  border: 1px solid rgba(153, 153, 255, 0.25);
+}
+
+.card-icon-me {
+  background: #1b0036;
+  color: #c891ff;
+  border: 1px solid rgba(200, 145, 255, 0.25);
+}
+
+.card-icon-ae {
+  background: #00005b;
+  color: #9999ff;
+  border: 1px solid rgba(153, 153, 255, 0.25);
+}
+
+.card-icon-plugin {
+  background: #0d2b1a;
+  color: #4ade80;
+  border: 1px solid rgba(74, 222, 128, 0.25);
 }
 
 .card-header {

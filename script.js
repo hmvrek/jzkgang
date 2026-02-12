@@ -53,6 +53,17 @@ const heroSection = document.getElementById("hero-section");
 const emptyState = document.getElementById("empty-state");
 const categoryCards = document.querySelectorAll(".category-card");
 const projectCards = document.querySelectorAll(".project-card");
+const subcategoryHeader = document.getElementById("subcategory-header");
+const subcategoryTitle = document.getElementById("subcategory-title");
+const backBtn = document.getElementById("back-btn");
+
+// Category display names
+const categoryNames = {
+  programy: "Programy",
+  crosshair: "Crosshair X",
+  fpsboost: "FPS Boost",
+  pluginy: "Pluginy",
+};
 
 // ---- Form Submit Handler ----
 form.addEventListener("submit", async (e) => {
@@ -183,11 +194,19 @@ function showView(category) {
     categoriesView.classList.remove("hidden");
     projectsGrid.classList.add("hidden");
     emptyState.classList.add("hidden");
+    subcategoryHeader.classList.add("hidden");
   } else {
     // Show filtered projects
     heroSection.style.display = "none";
     categoriesView.classList.add("hidden");
     projectsGrid.classList.remove("hidden");
+    
+    // Show subcategory header with title
+    subcategoryHeader.classList.remove("hidden");
+    subcategoryTitle.textContent = categoryNames[category] || category;
+    subcategoryHeader.style.animation = "none";
+    subcategoryHeader.offsetHeight;
+    subcategoryHeader.style.animation = "fadeInUp 0.5s ease-out both";
 
     let visibleCount = 0;
     projectCards.forEach((card) => {
@@ -231,6 +250,11 @@ categoryCards.forEach((card) => {
   card.addEventListener("click", () => {
     showView(card.dataset.target);
   });
+});
+
+// Back button click
+backBtn.addEventListener("click", () => {
+  showView("all");
 });
 
 // Initialize: show home view, hide projects grid

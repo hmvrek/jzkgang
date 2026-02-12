@@ -28,6 +28,169 @@
   --font: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
+/* ==========================================================
+   FUTURISTIC BACKGROUND EFFECTS
+   ========================================================== */
+.bg-effects {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Subtle animated grid */
+.bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(168, 85, 247, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(168, 85, 247, 0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: gridPulse 8s ease-in-out infinite;
+}
+
+@keyframes gridPulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+/* Floating glowing orbs */
+.bg-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.35;
+  will-change: transform;
+}
+
+.bg-orb-1 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.5) 0%, transparent 70%);
+  top: -10%;
+  left: -5%;
+  animation: orbFloat1 20s ease-in-out infinite;
+}
+
+.bg-orb-2 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.4) 0%, transparent 70%);
+  bottom: -5%;
+  right: -5%;
+  animation: orbFloat2 25s ease-in-out infinite;
+}
+
+.bg-orb-3 {
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(236, 72, 153, 0.3) 0%, transparent 70%);
+  top: 40%;
+  left: 50%;
+  animation: orbFloat3 18s ease-in-out infinite;
+}
+
+@keyframes orbFloat1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(80px, 60px) scale(1.1); }
+  50% { transform: translate(30px, 120px) scale(0.95); }
+  75% { transform: translate(-50px, 40px) scale(1.05); }
+}
+
+@keyframes orbFloat2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(-70px, -50px) scale(1.08); }
+  50% { transform: translate(-30px, -100px) scale(0.92); }
+  75% { transform: translate(60px, -30px) scale(1.04); }
+}
+
+@keyframes orbFloat3 {
+  0%, 100% { transform: translate(-50%, 0) scale(1); }
+  33% { transform: translate(-60%, -60px) scale(1.15); }
+  66% { transform: translate(-40%, 50px) scale(0.9); }
+}
+
+/* Animated glow lines */
+.bg-glow-line {
+  position: absolute;
+  height: 1px;
+  opacity: 0;
+  background: linear-gradient(90deg, transparent, var(--accent), rgba(59, 130, 246, 0.6), transparent);
+}
+
+.bg-glow-line-1 {
+  width: 60%;
+  top: 30%;
+  left: -10%;
+  animation: glowLineMove1 12s ease-in-out infinite;
+}
+
+.bg-glow-line-2 {
+  width: 40%;
+  top: 70%;
+  right: -10%;
+  animation: glowLineMove2 15s ease-in-out infinite 3s;
+}
+
+@keyframes glowLineMove1 {
+  0% { transform: translateX(-100%) rotate(-2deg); opacity: 0; }
+  15% { opacity: 0.6; }
+  50% { opacity: 0.3; }
+  85% { opacity: 0.6; }
+  100% { transform: translateX(200%) rotate(-2deg); opacity: 0; }
+}
+
+@keyframes glowLineMove2 {
+  0% { transform: translateX(100%) rotate(1.5deg); opacity: 0; }
+  15% { opacity: 0.5; }
+  50% { opacity: 0.25; }
+  85% { opacity: 0.5; }
+  100% { transform: translateX(-250%) rotate(1.5deg); opacity: 0; }
+}
+
+/* Floating particles */
+.bg-particles {
+  position: absolute;
+  inset: 0;
+}
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0;
+  animation: particleFloat linear infinite;
+}
+
+@keyframes particleFloat {
+  0% {
+    opacity: 0;
+    transform: translateY(0) translateX(0);
+  }
+  10% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  90% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100vh) translateX(40px);
+  }
+}
+
+/* Ensure all content sits above the background */
+.gate,
+.content,
+.welcome-flash {
+  position: relative;
+  z-index: 1;
+}
+
 /* ---- Reset & Base ---- */
 *,
 *::before,
@@ -121,7 +284,8 @@ body {
   text-align: center;
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  animation: fadeInUp 0.7s ease-out;
+  animation: fadeInUp 0.7s ease-out, pulseGlow 6s ease-in-out infinite 1s;
+  box-shadow: 0 0 30px rgba(168, 85, 247, 0.08), 0 0 60px rgba(168, 85, 247, 0.04);
 }
 
 .gate-icon {
@@ -316,8 +480,9 @@ body {
   background: rgba(10, 10, 10, 0.85);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid rgba(168, 85, 247, 0.12);
   margin-bottom: 0;
+  box-shadow: 0 1px 30px rgba(168, 85, 247, 0.06);
 }
 
 .navbar-inner {
@@ -341,6 +506,13 @@ body {
   font-weight: 800;
   color: var(--accent);
   letter-spacing: -0.02em;
+  text-shadow: 0 0 20px rgba(168, 85, 247, 0.5), 0 0 40px rgba(168, 85, 247, 0.2);
+  animation: brandPulse 4s ease-in-out infinite;
+}
+
+@keyframes brandPulse {
+  0%, 100% { text-shadow: 0 0 20px rgba(168, 85, 247, 0.5), 0 0 40px rgba(168, 85, 247, 0.2); }
+  50% { text-shadow: 0 0 30px rgba(168, 85, 247, 0.7), 0 0 60px rgba(168, 85, 247, 0.35); }
 }
 
 .discord-btn {
@@ -411,6 +583,7 @@ body {
   letter-spacing: -0.03em;
   line-height: 1.15;
   margin-bottom: 20px;
+  text-shadow: 0 0 40px rgba(168, 85, 247, 0.3), 0 0 80px rgba(168, 85, 247, 0.1);
 }
 
 .hero-subtitle {
@@ -520,9 +693,9 @@ body {
 
 .project-card:hover {
   background: var(--bg-card-hover);
-  border-color: var(--border-hover);
+  border-color: rgba(168, 85, 247, 0.2);
   transform: translateY(-4px);
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--border-hover);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(168, 85, 247, 0.08), 0 0 0 1px rgba(168, 85, 247, 0.15);
 }
 
 /* ---- Program Icons ---- */
@@ -757,4 +930,16 @@ body {
     grid-template-columns: 1fr;
     gap: 16px;
   }
+}
+
+/* Reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .bg-orb,
+  .bg-glow-line,
+  .particle,
+  .bg-grid {
+    animation: none !important;
+  }
+  .bg-orb { opacity: 0.2; }
+  .bg-grid { opacity: 0.3; }
 }

@@ -16,6 +16,17 @@
 </head>
 <body>
 
+  <!-- ===================== FUTURISTIC BACKGROUND ===================== -->
+  <div class="bg-effects" aria-hidden="true">
+    <div class="bg-grid"></div>
+    <div class="bg-orb bg-orb-1"></div>
+    <div class="bg-orb bg-orb-2"></div>
+    <div class="bg-orb bg-orb-3"></div>
+    <div class="bg-glow-line bg-glow-line-1"></div>
+    <div class="bg-glow-line bg-glow-line-2"></div>
+    <div class="bg-particles" id="bg-particles"></div>
+  </div>
+
   <!-- ===================== ACCESS GATE ===================== -->
   <section id="access-gate" class="gate">
     <div class="gate-card">
@@ -534,6 +545,24 @@
       <p>Protected access &bull; Klucz wejscia generowany przez bota Discord jednorazowo</p>
     </footer>
   </main>
+
+  <!-- Particle Background -->
+  <script>
+    (function() {
+      const container = document.getElementById('bg-particles');
+      if (!container) return;
+      for (let i = 0; i < 30; i++) {
+        const p = document.createElement('div');
+        p.className = 'particle';
+        p.style.left = Math.random() * 100 + '%';
+        p.style.top = Math.random() * 100 + '%';
+        p.style.width = p.style.height = (Math.random() * 3 + 1) + 'px';
+        p.style.animationDelay = (Math.random() * 8) + 's';
+        p.style.animationDuration = (Math.random() * 10 + 10) + 's';
+        container.appendChild(p);
+      }
+    })();
+  </script>
 
   <!-- Firebase SDK (modular, via CDN) -->
   <script type="module" src="script.js"></script>

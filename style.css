@@ -345,7 +345,7 @@ body {
   align-items: center;
   justify-content: center;
   filter: drop-shadow(0 0 20px rgba(168, 85, 247, 0.5)) drop-shadow(0 0 40px rgba(168, 85, 247, 0.2));
-  animation: float 4s ease-in-out infinite, lockPulse 3s ease-in-out infinite;
+  animation: lockPulse 3s ease-in-out infinite;
 }
 
 .gate-icon svg {

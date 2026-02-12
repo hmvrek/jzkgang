@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>JZK GANG</title>
   <meta name="description" content="JZK GANG - Access-protected project portfolio" />
-  <meta name="theme-color" content="#050508" />
+  <meta name="theme-color" content="#06050e" />
 
   <!-- Google Fonts: Inter + Space Grotesk -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -35,7 +35,12 @@
   <section id="access-gate" class="gate">
     <div class="gate-card">
       <div class="gate-icon">
-        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <div class="gate-icon-rings" aria-hidden="true">
+          <div class="gate-ring gate-ring-1"></div>
+          <div class="gate-ring gate-ring-2"></div>
+          <div class="gate-ring gate-ring-3"></div>
+        </div>
+        <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
           <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
           <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
         </svg>
@@ -577,10 +582,14 @@
           p.style.width = p.style.height = size + 'px';
           p.style.animationDelay = (Math.random() * 10) + 's';
           p.style.animationDuration = (Math.random() * 12 + 12) + 's';
-          // Alternate between cyan and purple particles
-          if (Math.random() > 0.6) {
-            p.style.background = '#7c4dff';
+          // Alternate between purple shades and occasional cyan
+          const rand = Math.random();
+          if (rand > 0.7) {
+            p.style.background = '#22d3ee'; // cyan accent
+          } else if (rand > 0.4) {
+            p.style.background = '#c084fc'; // light purple
           }
+          // default is var(--accent) from CSS (#a855f7)
           container.appendChild(p);
         }
       }

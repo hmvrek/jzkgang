@@ -384,27 +384,46 @@ document.querySelectorAll(".plugin-card").forEach((card) => {
   });
 });
 
+// Helper: highlight matched text
+function highlightMatch(text, query) {
+  if (!query) return text;
+  const idx = text.toLowerCase().indexOf(query.toLowerCase());
+  if (idx === -1) return text;
+  return text.slice(0, idx) + '<mark class="search-highlight">' + text.slice(idx, idx + query.length) + '</mark>' + text.slice(idx + query.length);
+}
+
 // Search input handler
 searchInput.addEventListener("input", () => {
-  const query = searchInput.value.trim().toLowerCase();
-  if (!query) {
+  const queryText = searchInput.value.trim().toLowerCase();
+  if (!queryText) {
     searchResults.classList.add("hidden");
     return;
   }
 
-  const matches = searchableItems.filter((item) => item.searchText.includes(query));
+  const matches = searchableItems.filter((item) => item.searchText.includes(queryText));
 
   if (matches.length === 0) {
-    searchResultsInner.innerHTML = '<div class="search-no-results">Brak wynikow dla "' + searchInput.value.trim() + '"</div>';
+    searchResultsInner.innerHTML = `
+      <div class="search-no-results">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.4;margin-bottom:8px;">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <span>Brak wynikow dla "${searchInput.value.trim()}"</span>
+      </div>`;
   } else {
-    searchResultsInner.innerHTML = matches
+    searchResultsInner.innerHTML = `
+      <div class="search-results-header">
+        <span class="search-results-label">Wyniki</span>
+        <span class="search-results-count">${matches.length} ${matches.length === 1 ? 'wynik' : 'wynikow'}</span>
+      </div>` + matches
       .slice(0, 10)
       .map(
         (item, i) =>
           `<div class="search-result-item" data-index="${i}">
             <div class="search-result-icon">${item.badge.slice(0, 2)}</div>
             <div class="search-result-info">
-              <h4>${item.title}</h4>
+              <h4>${highlightMatch(item.title, queryText)}</h4>
               <span>${item.category}</span>
             </div>
             <span class="search-result-badge">${item.badge}</span>
@@ -433,11 +452,49 @@ document.addEventListener("click", (e) => {
   }
 });
 
+// Keyboard navigation for search results
+let activeSearchIndex = -1;
+
+function updateActiveSearchItem() {
+  const items = searchResultsInner.querySelectorAll(".search-result-item");
+  items.forEach((item, i) => {
+    if (i === activeSearchIndex) {
+      item.classList.add("search-result-active");
+      item.scrollIntoView({ block: "nearest" });
+    } else {
+      item.classList.remove("search-result-active");
+    }
+  });
+}
+
+searchInput.addEventListener("keydown", (e) => {
+  const items = searchResultsInner.querySelectorAll(".search-result-item");
+  if (!items.length || searchResults.classList.contains("hidden")) return;
+
+  if (e.key === "ArrowDown") {
+    e.preventDefault();
+    activeSearchIndex = Math.min(activeSearchIndex + 1, items.length - 1);
+    updateActiveSearchItem();
+  } else if (e.key === "ArrowUp") {
+    e.preventDefault();
+    activeSearchIndex = Math.max(activeSearchIndex - 1, 0);
+    updateActiveSearchItem();
+  } else if (e.key === "Enter" && activeSearchIndex >= 0) {
+    e.preventDefault();
+    items[activeSearchIndex].click();
+    activeSearchIndex = -1;
+  }
+});
+
+// Reset active index on new search
+searchInput.addEventListener("input", () => { activeSearchIndex = -1; });
+
 // Close search on Escape, open on Ctrl+K
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") {
     searchResults.classList.add("hidden");
     searchInput.blur();
+    activeSearchIndex = -1;
   }
   if ((e.ctrlKey || e.metaKey) && e.key === "k") {
     e.preventDefault();

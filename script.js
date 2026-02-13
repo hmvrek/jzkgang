@@ -56,6 +56,8 @@ const projectCards = document.querySelectorAll(".project-card");
 const subcategoryHeader = document.getElementById("subcategory-header");
 const subcategoryTitle = document.getElementById("subcategory-title");
 const backBtn = document.getElementById("back-btn");
+const programyAccordions = document.getElementById("programy-accordions");
+const accordionTriggers = document.querySelectorAll(".accordion-trigger");
 
 // Category display names
 const categoryNames = {
@@ -195,11 +197,33 @@ function showView(category) {
     projectsGrid.classList.add("hidden");
     emptyState.classList.add("hidden");
     subcategoryHeader.classList.add("hidden");
+    // Hide accordion groups
+    programyAccordions.classList.add("hidden");
+  } else if (category === "programy") {
+    // Show accordion-based programy view
+    heroSection.style.display = "none";
+    categoriesView.classList.add("hidden");
+    projectsGrid.classList.add("hidden");
+    emptyState.classList.add("hidden");
+
+    // Show subcategory header
+    subcategoryHeader.classList.remove("hidden");
+    subcategoryTitle.textContent = categoryNames[category] || category;
+    subcategoryHeader.style.animation = "none";
+    subcategoryHeader.offsetHeight;
+    subcategoryHeader.style.animation = "fadeInUp 0.5s ease-out both";
+
+    // Show accordion groups
+    programyAccordions.classList.remove("hidden");
+    programyAccordions.style.animation = "none";
+    programyAccordions.offsetHeight;
+    programyAccordions.style.animation = "fadeInUp 0.6s ease-out both";
   } else {
-    // Show filtered projects
+    // Show filtered projects (non-programy categories)
     heroSection.style.display = "none";
     categoriesView.classList.add("hidden");
     projectsGrid.classList.remove("hidden");
+    programyAccordions.classList.add("hidden");
     
     // Show subcategory header with title
     subcategoryHeader.classList.remove("hidden");
@@ -208,8 +232,10 @@ function showView(category) {
     subcategoryHeader.offsetHeight;
     subcategoryHeader.style.animation = "fadeInUp 0.5s ease-out both";
 
+    // Only count/show non-accordion project cards
+    const standaloneCards = projectsGrid.querySelectorAll(".project-card");
     let visibleCount = 0;
-    projectCards.forEach((card) => {
+    standaloneCards.forEach((card) => {
       if (card.dataset.category === category) {
         card.classList.remove("hidden");
         visibleCount++;
@@ -227,7 +253,7 @@ function showView(category) {
 
     // Re-trigger staggered animation
     let delay = 0.1;
-    projectCards.forEach((card) => {
+    standaloneCards.forEach((card) => {
       if (!card.classList.contains("hidden")) {
         card.style.animation = "none";
         card.offsetHeight; // force reflow
@@ -257,5 +283,23 @@ backBtn.addEventListener("click", () => {
   showView("all");
 });
 
-// Initialize: show home view, hide projects grid
+// Accordion toggle handlers
+accordionTriggers.forEach((trigger) => {
+  trigger.addEventListener("click", () => {
+    const accordion = trigger.closest(".app-accordion");
+    const isOpen = accordion.classList.contains("open");
+    
+    // Toggle this accordion
+    if (isOpen) {
+      accordion.classList.remove("open");
+      trigger.setAttribute("aria-expanded", "false");
+    } else {
+      accordion.classList.add("open");
+      trigger.setAttribute("aria-expanded", "true");
+    }
+  });
+});
+
+// Initialize: show home view, hide projects grid and accordions
 projectsGrid.classList.add("hidden");
+programyAccordions.classList.add("hidden");

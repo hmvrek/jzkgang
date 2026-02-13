@@ -56,15 +56,19 @@ const projectCards = document.querySelectorAll(".project-card");
 const subcategoryHeader = document.getElementById("subcategory-header");
 const subcategoryTitle = document.getElementById("subcategory-title");
 const backBtn = document.getElementById("back-btn");
-const programyAccordions = document.getElementById("programy-accordions");
+const programyLayout = document.getElementById("programy-layout");
 const accordionTriggers = document.querySelectorAll(".accordion-trigger");
+
+// ---- DOM Elements (Search) ----
+const searchInput = document.getElementById("search-input");
+const searchResults = document.getElementById("search-results");
+const searchResultsInner = document.getElementById("search-results-inner");
 
 // Category display names
 const categoryNames = {
   programy: "Programy",
   crosshair: "Crosshair X",
   fpsboost: "FPS Boost",
-  pluginy: "Pluginy",
 };
 
 // ---- Form Submit Handler ----
@@ -197,10 +201,10 @@ function showView(category) {
     projectsGrid.classList.add("hidden");
     emptyState.classList.add("hidden");
     subcategoryHeader.classList.add("hidden");
-    // Hide accordion groups
-    programyAccordions.classList.add("hidden");
+    // Hide programy layout
+    programyLayout.classList.add("hidden");
   } else if (category === "programy") {
-    // Show accordion-based programy view
+    // Show accordion-based programy view with plugins sidebar
     heroSection.style.display = "none";
     categoriesView.classList.add("hidden");
     projectsGrid.classList.add("hidden");
@@ -213,17 +217,17 @@ function showView(category) {
     subcategoryHeader.offsetHeight;
     subcategoryHeader.style.animation = "fadeInUp 0.5s ease-out both";
 
-    // Show accordion groups
-    programyAccordions.classList.remove("hidden");
-    programyAccordions.style.animation = "none";
-    programyAccordions.offsetHeight;
-    programyAccordions.style.animation = "fadeInUp 0.6s ease-out both";
+    // Show programy layout (accordions + plugins sidebar)
+    programyLayout.classList.remove("hidden");
+    programyLayout.style.animation = "none";
+    programyLayout.offsetHeight;
+    programyLayout.style.animation = "fadeInUp 0.6s ease-out both";
   } else {
     // Show filtered projects (non-programy categories)
     heroSection.style.display = "none";
     categoriesView.classList.add("hidden");
     projectsGrid.classList.remove("hidden");
-    programyAccordions.classList.add("hidden");
+    programyLayout.classList.add("hidden");
     
     // Show subcategory header with title
     subcategoryHeader.classList.remove("hidden");
@@ -300,6 +304,143 @@ accordionTriggers.forEach((trigger) => {
   });
 });
 
-// Initialize: show home view, hide projects grid and accordions
+// Initialize: show home view, hide projects grid and programy layout
 projectsGrid.classList.add("hidden");
-programyAccordions.classList.add("hidden");
+programyLayout.classList.add("hidden");
+
+// ==========================================================
+// SEARCH FUNCTIONALITY
+// ==========================================================
+
+// Build searchable items index
+const searchableItems = [];
+
+// Index accordion items (programs)
+document.querySelectorAll(".app-accordion").forEach((accordion) => {
+  const appName = accordion.querySelector(".accordion-info h3")?.textContent || "";
+  accordion.querySelectorAll(".accordion-cards-grid .project-card").forEach((card) => {
+    const title = card.querySelector(".card-header h2")?.textContent || "";
+    const badge = card.querySelector(".card-badge")?.textContent || "";
+    const desc = card.querySelector("p")?.textContent || "";
+    searchableItems.push({
+      title,
+      badge,
+      category: "Programy",
+      searchText: `${appName} ${title} ${badge} ${desc}`.toLowerCase(),
+      action: () => {
+        showView("programy");
+        accordion.classList.add("open");
+        accordion.querySelector(".accordion-trigger")?.setAttribute("aria-expanded", "true");
+        setTimeout(() => {
+          card.scrollIntoView({ behavior: "smooth", block: "center" });
+          card.style.animation = "none";
+          card.offsetHeight;
+          card.style.animation = "borderGlow 1.5s ease-in-out";
+        }, 400);
+      },
+    });
+  });
+});
+
+// Index standalone project cards (crosshair, fpsboost)
+document.querySelectorAll("#projects-grid .project-card").forEach((card) => {
+  const title = card.querySelector(".card-header h2")?.textContent || "";
+  const badge = card.querySelector(".card-badge")?.textContent || "";
+  const desc = card.querySelector("p")?.textContent || "";
+  const cat = card.dataset.category;
+  searchableItems.push({
+    title,
+    badge,
+    category: categoryNames[cat] || cat,
+    searchText: `${title} ${badge} ${desc} ${categoryNames[cat] || cat}`.toLowerCase(),
+    action: () => {
+      showView(cat);
+      setTimeout(() => {
+        card.scrollIntoView({ behavior: "smooth", block: "center" });
+      }, 300);
+    },
+  });
+});
+
+// Index plugin cards
+document.querySelectorAll(".plugin-card").forEach((card) => {
+  const title = card.querySelector("h4")?.textContent || "";
+  const desc = card.querySelector(".plugin-info p")?.textContent || "";
+  const searchable = card.dataset.searchable || "";
+  searchableItems.push({
+    title,
+    badge: "PLUGIN",
+    category: "Pluginy",
+    searchText: `${title} ${desc} ${searchable} pluginy`.toLowerCase(),
+    action: () => {
+      showView("programy");
+      setTimeout(() => {
+        card.scrollIntoView({ behavior: "smooth", block: "center" });
+        card.style.animation = "none";
+        card.offsetHeight;
+        card.style.animation = "borderGlow 1.5s ease-in-out";
+      }, 400);
+    },
+  });
+});
+
+// Search input handler
+searchInput.addEventListener("input", () => {
+  const query = searchInput.value.trim().toLowerCase();
+  if (!query) {
+    searchResults.classList.add("hidden");
+    return;
+  }
+
+  const matches = searchableItems.filter((item) => item.searchText.includes(query));
+
+  if (matches.length === 0) {
+    searchResultsInner.innerHTML = '<div class="search-no-results">Brak wynikow dla "' + searchInput.value.trim() + '"</div>';
+  } else {
+    searchResultsInner.innerHTML = matches
+      .slice(0, 10)
+      .map(
+        (item, i) =>
+          `<div class="search-result-item" data-index="${i}">
+            <div class="search-result-icon">${item.badge.slice(0, 2)}</div>
+            <div class="search-result-info">
+              <h4>${item.title}</h4>
+              <span>${item.category}</span>
+            </div>
+            <span class="search-result-badge">${item.badge}</span>
+          </div>`
+      )
+      .join("");
+
+    // Add click handlers
+    const filteredMatches = matches.slice(0, 10);
+    searchResultsInner.querySelectorAll(".search-result-item").forEach((el, i) => {
+      el.addEventListener("click", () => {
+        filteredMatches[i].action();
+        searchInput.value = "";
+        searchResults.classList.add("hidden");
+      });
+    });
+  }
+
+  searchResults.classList.remove("hidden");
+});
+
+// Close search on click outside
+document.addEventListener("click", (e) => {
+  if (!searchResults.contains(e.target) && e.target !== searchInput) {
+    searchResults.classList.add("hidden");
+  }
+});
+
+// Close search on Escape, open on Ctrl+K
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    searchResults.classList.add("hidden");
+    searchInput.blur();
+  }
+  if ((e.ctrlKey || e.metaKey) && e.key === "k") {
+    e.preventDefault();
+    searchInput.focus();
+  }
+});

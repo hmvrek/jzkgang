@@ -141,6 +141,37 @@ function unlockContent() {
     gate.classList.add("hidden");
     mainContent.classList.remove("hidden");
 
+    // Re-trigger animations for elements that were hidden via display:none
+    // Hero section
+    const hero = document.querySelector(".hero");
+    if (hero) {
+      hero.style.animation = "none";
+      hero.offsetHeight;
+      hero.style.animation = "fadeInUp 0.8s ease-out 0.3s both";
+    }
+
+    // Category cards
+    document.querySelectorAll(".category-card").forEach((card, i) => {
+      card.style.animation = "none";
+      card.offsetHeight;
+      card.style.animation = `cardReveal 0.7s ease-out ${0.4 + i * 0.1}s both`;
+    });
+
+    // Accordions (for when user navigates to Programy later)
+    document.querySelectorAll(".app-accordion").forEach((acc, i) => {
+      acc.style.animation = "none";
+      acc.offsetHeight;
+      acc.style.animation = `cardReveal 0.6s ease-out ${0.1 + i * 0.1}s both`;
+    });
+
+    // Plugins sidebar
+    const sidebar = document.querySelector(".plugins-sidebar");
+    if (sidebar) {
+      sidebar.style.animation = "none";
+      sidebar.offsetHeight;
+      sidebar.style.animation = "cardReveal 0.7s ease-out 0.5s both";
+    }
+
     // Show welcome flash, then hide it
     setTimeout(() => {
       welcomeFlash.style.display = "none";
@@ -219,6 +250,22 @@ function showView(category) {
     programyLayout.style.animation = "none";
     programyLayout.offsetHeight;
     programyLayout.style.animation = "fadeInUp 0.6s ease-out both";
+
+    // Re-trigger accordion animations (they may have been skipped while hidden)
+    const accordions = programyLayout.querySelectorAll(".app-accordion");
+    accordions.forEach((acc, i) => {
+      acc.style.animation = "none";
+      acc.offsetHeight;
+      acc.style.animation = `cardReveal 0.6s ease-out ${0.1 + i * 0.1}s both`;
+    });
+
+    // Re-trigger plugins sidebar animation
+    const sidebar = programyLayout.querySelector(".plugins-sidebar");
+    if (sidebar) {
+      sidebar.style.animation = "none";
+      sidebar.offsetHeight;
+      sidebar.style.animation = "cardReveal 0.7s ease-out 0.5s both";
+    }
   } else {
     // Show filtered projects (non-programy categories)
     heroSection.style.display = "none";
